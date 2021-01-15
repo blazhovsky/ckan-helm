@@ -3,7 +3,7 @@ on:
   push:
     # tags: 'chart.*'
     branches:
-     - master
+     - test-publish-action-dave
 
 jobs:
   release-chart:
