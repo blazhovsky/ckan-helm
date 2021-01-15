@@ -6,29 +6,30 @@ on:
      - test-publish-action-dave
 #test
 jobs:
-  release-chart:
+  buildx:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v2
-      # - name: Publish Helm chart
-      #   uses: stefanprodan/helm-gh-pages@master
-        # with:
-        #   token: ${{ secrets.BOT_GITHUB_TOKEN }}
-        #   helm_version: 3.2.1
-        #   charts_dir: chart
-        #   charts_url: https://blazhovsky.github.io/chart-publish-test/
-        #   owner: blazhovsky
-        #   repository: chart-publish-test
-        #   branch: gh-pages
-        #   target_dir: charts
-        #   commit_username: blazhovsky
-        #   commit_email: blagoja.stojkoski@gmail.com
-      - uses: actions/checkout@v1
-      - uses: dave-mcconnell/helm-gh-pages-microservices@master
+
+      - name: Checkout helm-charts
+        uses: actions/checkout@v2
         with:
-          access-token: ${{ secrets.HELM_PUBLISH }}
-          # // location of helm charts in your code repo
-          source-charts-folder: 'charts'
-          destination-repo: blazhovsky/chart-publish-test
-          destination-branch: gh-pages
-          destination-charts-folder: charts
+          repository: blazhovsky/ckan-helm
+          ref: refs/heads/gh-pages
+          path: ./
+          token: ${{ secrets.HELM_PUBLISH }}
+
+      - name: Publish the Helm chart
+        id: publish-chart
+        uses: moikot/chart-publish-action@v1
+        with:
+          charts_dir: "charts"
+          charts_url: "https://blazhovsky.github.io/chart-publish-test"
+
+      - name: Commit and push helm-charts
+        uses: EndBug/add-and-commit@v6
+        with:
+          author_name: Blagoja Stojkoski
+          author_email: email@email.com
+          branch: gh-pages
+          cwd: charts
+          message: "Commit chart ${{ steps.publish-chart.outputs.chart }}"
