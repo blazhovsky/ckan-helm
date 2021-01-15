@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: dave-mcconnell/helm-gh-pages-microservices@master
         with:
-          access-token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          access-token: ${{ secrets.HELM_PUBLISH }}
           # // location of helm charts in your code repo
           source-charts-folder: 'test-charts'
           destination-repo: blazhovsky/chart-publish-test
