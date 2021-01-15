@@ -1,8 +1,9 @@
 name: release-chart
 on:
   push:
-    branches:
-     - master
+    tags: 'chart.*'
+    # branches:
+    #  - test-auto-publish
 
 jobs:
   release-chart:
@@ -13,7 +14,8 @@ jobs:
         uses: stefanprodan/helm-gh-pages@master
         with:
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          charts_dir: ./
+          helm_version: 3.2.1
+          charts_dir: chart
           charts_url: https://blazhovsky.github.io/chart-publish-test/
           owner: blazhovsky
           repository: chart-publish-test
