@@ -13,9 +13,9 @@ jobs:
         uses: stefanprodan/helm-gh-pages@master
         with:
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          charts_dir: chart
+          charts_dir: charts
           charts_url: https://charts.fluxcd.io
-          owner: fluxcd
+          owner: blazhovsky
           repository: chart-publish-test
           branch: gh-pages
           target_dir: charts
