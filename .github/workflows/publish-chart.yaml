@@ -28,7 +28,7 @@ jobs:
         with:
           access-token: ${{ secrets.HELM_PUBLISH }}
           # // location of helm charts in your code repo
-          source-charts-folder: ''
+          source-charts-folder: 'charts'
           destination-repo: blazhovsky/chart-publish-test
           destination-branch: master
           destination-charts-folder: charts
