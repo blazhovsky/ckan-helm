@@ -13,16 +13,16 @@ jobs:
       - name: Checkout helm-charts
         uses: actions/checkout@v2
         with:
-          repository: blazhovsky/ckan-helm
+          repository: blazhovsky/chart-publish-test
           ref: refs/heads/gh-pages
-          path: ./
+          path: charts
           token: ${{ secrets.HELM_PUBLISH }}
 
       - name: Publish the Helm chart
         id: publish-chart
         uses: moikot/chart-publish-action@v1
         with:
-          charts_dir: "charts"
+          charts_dir: "./"
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
       - name: Commit and push helm-charts
