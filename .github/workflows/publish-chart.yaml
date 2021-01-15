@@ -1,8 +1,9 @@
 name: release-chart
 on:
   push:
-    branches:
-     - test-auto-publish
+    tags: '*'
+    # branches:
+    #  - test-auto-publish
 
 jobs:
   release-chart:
