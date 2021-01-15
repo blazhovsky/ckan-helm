@@ -30,5 +30,5 @@ jobs:
           # // location of helm charts in your code repo
           source-charts-folder: 'charts'
           destination-repo: blazhovsky/chart-publish-test
-          destination-branch: master
+          destination-branch: gh-pages
           destination-charts-folder: charts
