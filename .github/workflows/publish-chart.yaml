@@ -1,25 +1,32 @@
 name: release-chart
 on:
   push:
-    tags: 'chart.*'
-    # branches:
-    #  - test-auto-publish
+    # tags: 'chart.*'
+    branches:
+     - master
 
 jobs:
   release-chart:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish Helm chart
-        uses: stefanprodan/helm-gh-pages@master
+      # - uses: actions/checkout@v2
+      # - name: Publish Helm chart
+      #   uses: stefanprodan/helm-gh-pages@master
+        # with:
+        #   token: ${{ secrets.BOT_GITHUB_TOKEN }}
+        #   helm_version: 3.2.1
+        #   charts_dir: chart
+        #   charts_url: https://blazhovsky.github.io/chart-publish-test/
+        #   owner: blazhovsky
+        #   repository: chart-publish-test
+        #   branch: gh-pages
+        #   target_dir: charts
+        #   commit_username: blazhovsky
+        #   commit_email: blagoja.stojkoski@gmail.com
+      - uses: actions/checkout@v1
+      - uses: dave-mcconnell/helm-gh-pages-microservices@master
         with:
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          helm_version: 3.2.1
-          charts_dir: chart
-          charts_url: https://blazhovsky.github.io/chart-publish-test/
-          owner: blazhovsky
-          repository: chart-publish-test
-          branch: gh-pages
-          target_dir: charts
-          commit_username: blazhovsky
-          commit_email: blagoja.stojkoski@gmail.com
+          access-token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          # // location of helm charts in your code repo
+          source-charts-folder: 'test-charts'
+          destination-repo: blazhovsky/chart-publish-test
