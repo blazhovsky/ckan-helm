@@ -13,6 +13,13 @@ jobs:
       - name: Checkout helm-charts
         uses: actions/checkout@v2
         with:
+          repository: blazhovsky/ckan-helm
+          ref: refs/heads/test-publish-action-dave
+          path: ckan-helm
+
+      - name: Checkout helm-charts
+        uses: actions/checkout@v2
+        with:
           # repository: blazhovsky/ckan-helm
           # ref: refs/heads/test-publish-action-dave
           # path: ckan-helm
@@ -25,7 +32,7 @@ jobs:
         id: publish-chart
         uses: moikot/chart-publish-action@v1
         with:
-          chart: ./
+          chart: ckan-helm
           charts_dir: chart-publish
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
