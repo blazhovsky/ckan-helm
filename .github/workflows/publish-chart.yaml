@@ -10,36 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # - name: Checkout helm-charts
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: blazhovsky/ckan-helm
-      #     ref: refs/heads/test-publish-action-dave
-      #     # path: ./
-      #     # token: ${{ secrets.HELM_PUBLISH }}
-      
       - name: Checkout helm-charts
         uses: actions/checkout@v2
         with:
-          repository: blazhovsky/chart-publish-test
+          # repository: blazhovsky/ckan-helm
+          # ref: refs/heads/test-publish-action-dave
+          # path: ckan-helm
+          repository: blazhovsky/ckan-helm
           ref: refs/heads/master
-          path: charts-to-publish
+          path: chart-publish
           token: ${{ secrets.HELM_PUBLISH }}
-      
+
       - name: Publish the Helm chart
         id: publish-chart
         uses: moikot/chart-publish-action@v1
         with:
           chart: ./
-          charts_dir: "./"
+          charts_dir: chart-publish
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
-      
       - name: Commit and push helm-charts
         uses: EndBug/add-and-commit@v6
         with:
           author_name: Blagoja Stojkoski
           author_email: email@email.com
           branch: master
-          cwd: charts-to-publish
+          cwd: chart-publish
           message: "Commit chart ${{ steps.publish-chart.outputs.chart }}"
