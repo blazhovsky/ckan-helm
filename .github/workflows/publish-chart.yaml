@@ -15,13 +15,14 @@ jobs:
         with:
           repository: blazhovsky/ckan-helm
           ref: refs/heads/test-publish-action-dave
-          path: ./
+          # path: ./
           token: ${{ secrets.HELM_PUBLISH }}
 
       - name: Publish the Helm chart
         id: publish-chart
         uses: moikot/chart-publish-action@v1
         with:
+          chart: "./"
           charts_dir: "charts"
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
