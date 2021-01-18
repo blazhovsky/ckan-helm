@@ -24,7 +24,7 @@ jobs:
           # repository: blazhovsky/ckan-helm
           # ref: refs/heads/test-publish-action-dave
           # path: ckan-helm
-          repository: blazhovsky/ckan-helm
+          repository: blazhovsky/chart-publish-test
           ref: refs/heads/master
           path: chart-publish
           token: ${{ secrets.HELM_PUBLISH }}
