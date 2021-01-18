@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout helm-charts
-        uses: actions/checkout@v2
-        with:
-          repository: blazhovsky/ckan-helm
-          ref: refs/heads/test-publish-action-dave
-          path: ckan-helm
-          token: ${{ secrets.HELM_PUBLISH }}
+      # - name: Checkout helm-charts
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: blazhovsky/ckan-helm
+      #     ref: refs/heads/test-publish-action-dave
+      #     path: ckan-helm-repo
+      #     token: ${{ secrets.HELM_PUBLISH }}
 
       - name: Checkout pages repo
         uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
         id: publish-chart
         uses: moikot/chart-publish-action@v1
         with:
-          chart: ckan-helm
+          chart: ./
           charts_dir: chart-publish
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
