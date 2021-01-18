@@ -34,7 +34,7 @@ jobs:
         uses: moikot/chart-publish-action@v1
         with:
           # chart: ./
-          charts_dir: chart-publish
+          charts_dir: chart-publish/charts
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
       - name: Commit and push helm-charts
@@ -43,5 +43,5 @@ jobs:
           author_name: Blagoja Stojkoski
           author_email: email@email.com
           branch: master
-          cwd: chart-publish/charts
+          cwd: chart-publish
           message: "Commit chart ${{ steps.publish-chart.outputs.chart }}"
