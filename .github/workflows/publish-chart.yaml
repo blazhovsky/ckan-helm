@@ -16,8 +16,9 @@ jobs:
           repository: blazhovsky/ckan-helm
           ref: refs/heads/test-publish-action-dave
           path: ckan-helm
+          token: ${{ secrets.HELM_PUBLISH }}
 
-      - name: Checkout helm-charts
+      - name: Checkout pages repo
         uses: actions/checkout@v2
         with:
           # repository: blazhovsky/ckan-helm
