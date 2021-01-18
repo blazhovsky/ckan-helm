@@ -43,5 +43,5 @@ jobs:
           author_name: Blagoja Stojkoski
           author_email: email@email.com
           branch: master
-          cwd: chart-publish
+          cwd: chart-publish/charts
           message: "Commit chart ${{ steps.publish-chart.outputs.chart }}"
