@@ -34,7 +34,7 @@ jobs:
         uses: moikot/chart-publish-action@v1
         with:
           # chart: ./
-          charts_dir: chart-publish/charts
+          charts_dir: chart-publish/docs/charts
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
       - name: Commit and push helm-charts
