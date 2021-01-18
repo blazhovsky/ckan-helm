@@ -22,7 +22,6 @@ jobs:
         id: publish-chart
         uses: moikot/chart-publish-action@v1
         with:
-          chart: "./"
           charts_dir: "charts"
           charts_url: "https://blazhovsky.github.io/chart-publish-test"
 
